@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-y)2crcs2n4cd8%%vr_1j()9ax@gsz!)lcb*=mpap83+9h=4wrt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'app', '0.0.0.0']
 
 
 
@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'gameday.urls'
 
 TEMPLATES = [
@@ -67,6 +68,35 @@ TEMPLATES = [
         },
     },
 ]
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+
+        'json': {
+
+           'class': 'pythonjsonlogger.jsonlogger.JsonFormatter'
+
+         }  
+
+       },
+
+
+    'handlers': {
+      "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "json",
+            }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
 
 WSGI_APPLICATION = 'gameday.wsgi.application'
 
