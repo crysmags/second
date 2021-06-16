@@ -95,6 +95,10 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
+        'ddtrace': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
     },
 }
 

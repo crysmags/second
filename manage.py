@@ -3,6 +3,12 @@
 import os
 import sys
 
+# from ddtrace import tracer
+
+# tracer.configure(
+#     hostname='172.17.0.1',
+#     port=8126,
+# )
 
 def main():
     """Run administrative tasks."""

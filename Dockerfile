@@ -13,5 +13,5 @@ RUN pip install -r requirements.txt
 COPY . . 
 # port where the Django app runs  
 EXPOSE 8000  
-CMD ["uwsgi", "--ini", "gameday_uwsgi.ini"]
+CMD ["ddtrace-run", "uwsgi", "--ini", "gameday_uwsgi.ini"]
 

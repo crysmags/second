@@ -8,9 +8,14 @@ https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/
 """
 
 import os
-
+from ddtrace.contrib.wsgi import DDWSGIMiddleware
 from django.core.wsgi import get_wsgi_application
 
+# application is a WSGI application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gameday.settings')
 
-application = get_wsgi_application()
+
+
+# application = get_wsgi_application()
+
+application = DDWSGIMiddleware(get_wsgi_application())
