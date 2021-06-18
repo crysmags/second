@@ -7,11 +7,11 @@ services:
     build: .
     depends_on: 
       - web
+      - datadog-agent
     volumes:
       - .:/app
     environment:
-      - DD_AGENT_HOST=172.17.0.1
-      - DD_TRACE_AGENT_PORT=8126
+      - DD_TRACE_AGENT_URL=http://datadog-agent:8126/ 
       - DD_LOGS_INJECTION=true
       - DD_ENV=prod
       - DD_SERVICE=gameday
@@ -22,3 +22,25 @@ services:
      - ./templates:/etc/nginx/templates
     ports:
      - "8080:80"
+
+  datadog-agent:
+    image: datadog/agent
+    environment:
+     - DD_API_KEY=70db5fb01d28c44ce99ba0b6f03151d6
+     - DD_SITE=datadoghq.com
+     - DD_LOGS_ENABLED=true
+     - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true 
+     - DD_LOGS_CONFIG_DOCKER_CONTAINER_USE_FILE=true 
+     - DD_CONTAINER_EXCLUDE="name:datadog-agent" 
+     - DD_APM_ENABLED=true 
+     - DD_APM_NON_LOCAL_TRAFFIC=true 
+    volumes:
+     - /var/run/docker.sock:/var/run/docker.sock
+     - /proc/:/host/proc/:ro
+     - /sys/fs/cgroup:/host/sys/fs/cgroup:ro 
+     - /var/lib/docker/containers:/var/lib/docker/containers:ro
+     - /opt/datadog-agent/run:/opt/datadog-agent/run:rw   
+
+    
+    
+  
