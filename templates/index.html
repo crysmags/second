@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>
+        
+
+
+        {% block title %}
+
+        
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" />
+</head>
+<body style="background-color:black">
+
+<div>
+{% include "./header.html" %}
+
+<h2 class="ui center aligned grey icon header">
+    <i class="sun outline icon"></i>
+    <div class="content">
+      Datadog APM
+      <div class="sub header"> Find the Magic</div>
+    </div>
+  </h2>
+
+<div class="ui container">
+    {% block content%}
+    <style>
+        img {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        </style>
+    <img class="center" src='https://avmconsulting.net/wp-content/themes/avm/custom-assets/img/services_07.png' height=60% width=50%  />
+
+    {% endblock content%}
+</div>
+
+   
+</div>
+
+
+    
+</body>
+</html>
